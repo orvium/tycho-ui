@@ -1,0 +1,8 @@
+<div class="view-wrapper">
+  <app-con-call-view-donors [callDonorInfo]="callDonorInfo"
+  ></app-con-call-view-donors>
+  <app-con-call-view-calls [calls]="calls"
+                           (edit)="onEdit($event)"
+                           (addNew)="onAddNew()"
+  ></app-con-call-view-calls>
+</div>

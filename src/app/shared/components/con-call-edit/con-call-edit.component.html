@@ -1,0 +1,114 @@
+<mat-card class="con-call-edit-wrapper">
+  <mat-card-title class="cfd-title">Call for data</mat-card-title>
+
+  <mat-card-content>
+    <form [formGroup]="form" (ngSubmit)="submitForm()" class="form">
+      <div class="block-title w-100">Basic Information</div>
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Title</mat-label>
+        <input matInput formControlName="title">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill"  class="w-100">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+      </mat-form-field>
+
+      <div formGroupName="institution" class="w-100">
+        <div class="block-title w-100">The Institution</div>
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="name">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Private or public</mat-label>
+          <mat-select formControlName="isPrivate">
+            <mat-option [value]="true">Private</mat-option>
+            <mat-option [value]="false">Public</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Type of institution</mat-label>
+          <mat-select formControlName="institutionType">
+            <mat-option value="type 1">Type 1</mat-option>
+            <mat-option value="type 2">Type 2</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Location</mat-label>
+          <input matInput formControlName="location">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Website</mat-label>
+          <input matInput formControlName="website">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Department</mat-label>
+          <input matInput formControlName="department">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill"  class="w-100">
+          <mat-label>Description</mat-label>
+          <textarea matInput formControlName="description"></textarea>
+        </mat-form-field>
+      </div>
+
+      <div formGroupName="contactPerson" class="w-100">
+        <div class="block-title w-100">Contact Person</div>
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="name">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Surname</mat-label>
+          <input matInput formControlName="surname">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" type="email">
+        </mat-form-field>
+      </div>
+
+      <div formGroupName="data" class="w-100">
+        <div class="block-title w-100">Data</div>
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>License</mat-label>
+          <input matInput formControlName="license">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill"  class="w-100">
+          <mat-label>Third parties</mat-label>
+          <textarea matInput formControlName="thirdParties"></textarea>
+        </mat-form-field>
+
+        <div class="select-file-block">
+          <mat-form-field appearance="fill">
+            <mat-label>Data template</mat-label>
+            <input matInput formControlName="dataTemplate">
+          </mat-form-field>
+
+          <button mat-stroked-button
+                  color="primary"
+                  class="select-button"
+          >Select file</button>
+        </div>
+
+        <mat-form-field appearance="fill"  class="w-100">
+          <mat-label>Does this data contain personal information?</mat-label>
+          <textarea matInput formControlName="personalInformation"></textarea>
+        </mat-form-field>
+      </div>
+
+      <mat-card-actions>
+        <button mat-raised-button color="primary" type="submit">Submit</button>
+      </mat-card-actions>
+    </form>
+  </mat-card-content>
+</mat-card>

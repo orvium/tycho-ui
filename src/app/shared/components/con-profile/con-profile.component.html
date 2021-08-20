@@ -1,0 +1,57 @@
+<mat-card class="con-profile-wrapper">
+  <mat-card-title class="con-profile-title">Consumer profile</mat-card-title>
+
+  <mat-card-content class="w-100">
+    <form [formGroup]="form" (ngSubmit)="submitForm()" class="form">
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Private or public</mat-label>
+        <mat-select formControlName="isPrivate">
+          <mat-option [value]="true">Private</mat-option>
+          <mat-option [value]="false">Public</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Type of Institution</mat-label>
+        <mat-select formControlName="consumerType">
+          <mat-option value="type 1">Type 1</mat-option>
+          <mat-option value="type 2">Type 2</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Location</mat-label>
+        <input matInput formControlName="location">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Website</mat-label>
+        <input matInput formControlName="website">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Department</mat-label>
+        <input matInput formControlName="department">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill"  class="w-100">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Contact Email</mat-label>
+        <input matInput formControlName="email" type="email">
+      </mat-form-field>
+
+      <mat-card-actions>
+        <button mat-raised-button color="primary" type="submit">Save</button>
+      </mat-card-actions>
+    </form>
+  </mat-card-content>
+</mat-card>

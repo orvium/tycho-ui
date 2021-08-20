@@ -1,0 +1,22 @@
+<mat-toolbar color="primary">
+  <a class="header-logo" routerLink="/">
+    <span class="header-brand">Tycho</span>
+  </a>
+  <span class="header-spacer"></span>
+  <div *ngIf="user$ | async as user">Hi, {{ user.name }} ({{ user.role }})</div>
+  <div *ngIf="user$ | async as user">
+    <button mat-raised-button
+            class="button"
+            (click)="goToView()"
+    >View</button>
+    <button mat-raised-button
+            class="button"
+            (click)="goToProfile()"
+    >Profile</button>
+    <button mat-raised-button
+            color="warn"
+            class="button"
+            (click)="logout()"
+    >Logout</button>
+  </div>
+</mat-toolbar>

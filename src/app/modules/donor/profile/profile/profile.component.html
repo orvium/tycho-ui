@@ -1,0 +1,3 @@
+<div class="profile-wrapper" *ngIf="user$ | async as user">
+  <app-don-profile [donor]="user" (onSubmit)="onSave($event)"></app-don-profile>
+</div>

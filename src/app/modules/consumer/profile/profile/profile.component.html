@@ -1,0 +1,3 @@
+<div class="profile-wrapper" *ngIf="user$ | async as user">
+  <app-con-profile [consumer]="user" (onSubmit)="onSave($event)"></app-con-profile>
+</div>

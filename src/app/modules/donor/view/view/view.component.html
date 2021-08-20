@@ -1,0 +1,10 @@
+<div class="view-wrapper">
+  <app-don-call-list [calls]="myCalls"
+                     (revoke)="onRevoke($event)"
+                     (view)="onView($event)"
+  ></app-don-call-list>
+  <app-don-call-view [calls]="allCalls"
+                     (join)="onJoin($event)"
+                     (view)="onView($event)"
+  ></app-don-call-view>
+</div>

@@ -1,0 +1,27 @@
+<div class="authenticaion-wrapper">
+  <div class="content">
+    <h1>Please enter your credentials</h1>
+    <form [formGroup]="form" class="form" (ngSubmit)="login()">
+      <mat-form-field appearance="fill">
+        <mat-label>Role</mat-label>
+        <mat-select formControlName="role">
+          <mat-option [value]="role.Donor">{{ role.Donor }}</mat-option>
+          <mat-option [value]="role.Consumer">{{ role.Consumer }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email">
+      </mat-form-field>
+    
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" type="password">
+      </mat-form-field>
+      <div class="button-wrapper">
+        <button mat-raised-button color="primary" type="submit">Login</button>
+      </div>
+    </form>
+  </div>
+</div>

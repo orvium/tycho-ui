@@ -1,0 +1,7 @@
+@use '~@angular/material' as mat;
+@import "~@angular/material/theming";
+
+.footer {
+  padding: 1rem;
+  background-color: mat.get-color-from-palette(mat.$gray-palette, 300);
+}

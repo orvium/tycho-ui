@@ -1,0 +1,56 @@
+<mat-card class="con-call-view-donors-wrapper">
+  <mat-card-title class="con-call-view-donors-title">Donors list</mat-card-title>
+
+  <!-- <mat-card-actions class="filter-block">
+    <form [formGroup]="form" (ngSubmit)="onSearch()" class="form">
+      <mat-form-field appearance="fill">
+        <mat-label>Filter by</mat-label>
+        <mat-select formControlName="filterBy">
+          <mat-option value="name">Name</mat-option>
+          <mat-option value="date">Date</mat-option>
+          <mat-option value="call">Call for data</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button mat-stroked-button
+              color="primary"
+              type="submit"
+              class="search-button"
+      >Search</button>
+    </form>
+  </mat-card-actions> -->
+
+  <mat-card-content class="w-100">
+    <table mat-table
+           [dataSource]="dataSource"
+           matSort
+           class="mat-elevation-z2 w-100"
+    >
+
+      <!-- Donor Column -->
+      <ng-container matColumnDef="donor">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Donor </th>
+        <td mat-cell *matCellDef="let element"> {{ element.donor }} </td>
+      </ng-container>
+    
+      <!-- Date Column -->
+      <ng-container matColumnDef="callDate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.callDate | date: 'mediumDate' }}
+        </td>
+      </ng-container>
+
+      <!-- Call for data Column -->
+      <ng-container matColumnDef="callTitle">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Call for Data </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.callTitle }}
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </mat-card-content>
+</mat-card>

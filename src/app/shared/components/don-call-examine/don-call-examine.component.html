@@ -1,0 +1,11 @@
+<mat-card class="don-call-examine-wrapper">
+  <mat-card-title class="don-call-examine">{{ call.title }}</mat-card-title>
+  <mat-card-content>
+    <div><span class="title">Description:</span> {{ call.description }}</div>
+    <div><span class="title">Date:</span> {{ call.date | date: 'mediumDate' }}</div>
+    <div><span class="title">Institution name:</span> {{ call.institution.name }}</div>
+    <div><span class="title">Contact person:</span> {{ call.contactPerson.name }}</div>
+    <div><span class="title">License:</span> {{ call.data.license }}</div>
+    <div><span class="title">Personal Information:</span> {{ call.data.personalInformation }}</div>
+  </mat-card-content>
+</mat-card>

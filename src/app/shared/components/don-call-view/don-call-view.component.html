@@ -1,0 +1,49 @@
+<mat-card class="don-call-view-wrapper">
+  <mat-card-title class="don-call-view-title">Calls for data</mat-card-title>
+
+  <!-- <mat-card-actions class="filter-block">
+    <form [formGroup]="form" (ngSubmit)="onSearch()" class="form">
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name">
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Filter by</mat-label>
+        <mat-select formControlName="filterBy">
+          <mat-option value="name">Name</mat-option>
+          <mat-option value="date">Date</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button mat-stroked-button
+              color="primary"
+              type="submit"
+              class="search-button"
+      >Search</button>
+    </form>
+  </mat-card-actions> -->
+
+  <mat-card-content class="w-100">
+    <div *ngFor="let call of calls" class="call-wrapper">
+      <div class="left-side">
+        <div class="title">{{ call.title }}</div>
+        <div class="date">{{ call.date | date: 'mediumDate' }}</div>
+      </div>
+      <div class="right-side">
+        <button mat-stroked-button
+                color="primary"
+                type="button"
+                class="view-button"
+                (click)="onView(call._id)"
+        >View</button>
+        <button mat-raised-button
+                color="primary"
+                type="button"
+                class="view-button"
+                (click)="onJoin(call._id)"
+        >Join</button>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
