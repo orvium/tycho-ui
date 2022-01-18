@@ -1,0 +1,17 @@
+<div class="notifications-wrapper" *ngIf="notifications$ | async as notifications">
+  <div class="notifications-title">Notifications</div>
+  <mat-card class="notification mat-elevation-z4"
+            *ngFor="let notification of notifications"
+  >
+    <div class="date">{{ notification.createdOn | date:'short' }}</div>
+    <div class="title">{{ notification.title }}</div>
+    <mat-icon class="read-icon" *ngIf="notification.isRead; else readButton">done</mat-icon>
+    <ng-template #readButton>
+      <button mat-stroked-button
+              type="button"
+              color="primary"
+              (click)="markAsRead(notification)"
+      >Read</button>
+    </ng-template>
+  </mat-card>
+</div>

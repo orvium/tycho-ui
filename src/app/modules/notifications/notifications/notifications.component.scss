@@ -1,0 +1,36 @@
+.notifications-wrapper {
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+
+  .notifications-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+
+  .notification {
+    width: 100%;
+    min-height: 2.25rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+
+    .date {
+      width: 8rem;
+      font-weight: 500;
+      color: grey;
+    }
+
+    .title {
+      flex: 1;
+      font-weight: 400;
+    }
+
+    .read-icon {
+      margin-right: 1rem;
+      color: var(--green);
+    }
+  }
+}

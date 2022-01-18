@@ -13,10 +13,10 @@ export class ConProfileComponent implements OnInit {
   form: FormGroup;
 
   @Input() consumer: Consumer;
-  @Output() onSubmit: EventEmitter<Consumer>;
+  @Output() submitEvent: EventEmitter<Consumer>;
 
-  constructor(private _fb: FormBuilder, private _router: Router) {
-    this.onSubmit = new EventEmitter<Consumer>();
+  constructor(private fb: FormBuilder, private router: Router) {
+    this.submitEvent = new EventEmitter<Consumer>();
   }
 
   ngOnInit(): void {
@@ -25,7 +25,7 @@ export class ConProfileComponent implements OnInit {
 
 
   generateForm(): void {
-    this.form = this._fb.group({
+    this.form = this.fb.group({
       name: [ this.consumer ? this.consumer.name : null ],
       isPrivate: [ this.consumer ? this.consumer.isPrivate : null ],
       consumerType: [ this.consumer ? this.consumer.consumerType : null ],
@@ -38,9 +38,8 @@ export class ConProfileComponent implements OnInit {
   }
 
   submitForm(): void {
-    let result = Object.assign({}, this.consumer ?? this.consumer, this.form.value);
+    const result = Object.assign({}, this.consumer ?? this.consumer, this.form.value);
 
-    this.onSubmit.emit(result);
-    this._router.navigate(['consumer', 'view']);
+    this.submitEvent.emit(result);
   }
 }
