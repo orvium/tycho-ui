@@ -17,20 +17,20 @@ export class ProfileComponent implements OnInit {
   user$: BehaviorSubject<User>;
 
   constructor(
-    private _authService: AuthenticationService,
-    private _fakeApi: FakeApiService,
-    private _router: Router,
+    private authService: AuthenticationService,
+    private fakeApi: FakeApiService,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
-    this.user$ = this._authService.currentUser$;
+    this.user$ = this.authService.currentUser$;
   }
 
   onSave(consumer: Consumer): void {
-    this._fakeApi.updateConsumerProfile$(consumer).pipe(
-      tap((consumer: Consumer): void => {
-        this._authService.currentUser$.next(consumer);
-        this._router.navigate(['consumer', 'view']);
+    this.fakeApi.updateConsumerProfile$(consumer).pipe(
+      tap((updateCconsumer: Consumer): void => {
+        this.authService.currentUser$.next(updateCconsumer);
+        this.router.navigate(['consumer', 'calls-for-data']);
       })
     ).subscribe();
   }

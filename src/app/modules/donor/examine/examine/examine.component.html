@@ -1,3 +1,8 @@
 <div class="examine-wrapper" *ngIf="call$ | async as call">
-  <app-don-call-examine [call]="call"></app-don-call-examine>
+  <ng-container *ngIf="datasets$ | async as datasets">
+    <app-don-call-examine [call]="call"
+                          [datasets]="datasets"
+                          (datasetUpload)="onDatasetUpload($event)"
+    ></app-don-call-examine>
+  </ng-container>
 </div>

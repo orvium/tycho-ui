@@ -4,13 +4,18 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'view',
+    redirectTo: 'calls-for-data',
     pathMatch: 'full'
   },
   {
-    path: 'view',
-    loadChildren: () => import('./view/view.module')
-      .then(m => m.ViewModule)
+    path: 'calls-for-data',
+    loadChildren: () => import('./calls-for-data/calls-for-data.module')
+      .then(m => m.CallsForDataModule)
+  },
+  {
+    path: 'my-calls',
+    loadChildren: () => import('./my-calls/my-calls.module')
+      .then(m => m.MyCallsModule)
   },
   {
     path: 'profile',
