@@ -1,0 +1,28 @@
+<div class="all-datasets-wrapper">
+  <div class="title">Datasets</div>
+  <app-search label="Search for datasets"
+              (search)="setQuery($event)"
+              (clear)="clearSearch()"
+  ></app-search>
+  <div class="tags">
+    <mat-chip-list aria-label="Tags">
+      <ng-container *ngIf="!selectedTag">
+        <mat-chip *ngFor="let tag of tags" (click)="selectTag(tag)">{{tag}}</mat-chip>
+      </ng-container>
+      <mat-chip *ngIf="selectedTag" (removed)="removeTag()">
+        {{selectedTag}}
+        <button matChipRemove>
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip>
+    </mat-chip-list>
+  </div>
+  <div class="w-100 datasets-table">
+    <app-dataset-card *ngFor="let dataset of datasets"
+                      [dataset]=dataset
+    ></app-dataset-card>
+  </div>
+  <div *ngIf="!datasets.length" class="not-found">
+    Datasets not found!
+  </div>
+</div>
