@@ -1,0 +1,27 @@
+.upload-dataset-wrapper {
+  .title, .upload {
+    display: flex;
+    justify-content: center;
+  }
+
+  .input-field {
+    width: 100%;
+  }
+
+  .select-file-block {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 1rem;
+
+    .select-file-label {
+      padding: 0.5rem 1rem;
+      color: var(--primary);
+      font-weight: 500;
+      border: 1px solid var(--primary);
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  }
+}

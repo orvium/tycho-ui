@@ -1,0 +1,26 @@
+<mat-card class="call-card-wrapper mat-elevation-z8">
+  <img [src]="call.imageUrl" alt="" class="call-image">
+  <div class="call-right-side">
+    <div class="keyword-wrapper">
+      <p *ngFor="let keyword of call.keywords" class="keyword">{{ keyword }}</p>
+    </div>
+    <h2 class="title">{{ call.title }}</h2>
+    <div class="description">{{ call.description }}</div>
+    <div class="buttons-wrapper">
+      <button mat-stroked-button
+              *ngIf="secondaryButton"
+              [color]="secondaryButton.color"
+              type="button"
+              class="view-button"
+              (click)="onSecondaryButtonClick(call._id)"
+      >{{ secondaryButton.text }}</button>
+      <button mat-raised-button
+              *ngIf="mainButton"
+              [color]="mainButton.color"
+              type="button"
+              class="view-button"
+              (click)="onMainButtonClick(call._id)"
+      >{{ mainButton.text }}</button>
+    </div>
+  </div>
+</mat-card>

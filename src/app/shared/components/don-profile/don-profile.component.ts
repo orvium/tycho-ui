@@ -13,13 +13,13 @@ export class DonProfileComponent implements OnInit {
   form: FormGroup;
 
   @Input() donor: Donor;
-  @Output() onSubmit: EventEmitter<Donor>;
+  @Output() submitEvent: EventEmitter<Donor>;
 
   constructor(
-    private _fb: FormBuilder,
-    private _router: Router
+    private fb: FormBuilder,
+    private router: Router
   ) {
-    this.onSubmit = new EventEmitter<Donor>();
+    this.submitEvent = new EventEmitter<Donor>();
   }
 
   ngOnInit(): void {
@@ -28,7 +28,7 @@ export class DonProfileComponent implements OnInit {
 
 
   generateForm(): void {
-    this.form = this._fb.group({
+    this.form = this.fb.group({
       _id: [ this.donor ? this.donor._id : null ],
       name: [ this.donor ? this.donor.name : null ],
       surname: [ this.donor ? this.donor.surname : null ],
@@ -38,7 +38,6 @@ export class DonProfileComponent implements OnInit {
   }
 
   submitForm(): void {
-    this.onSubmit.emit(this.form.value);
-    this._router.navigate(['donor', 'view']);
+    this.submitEvent.emit(this.form.value);
   }
 }

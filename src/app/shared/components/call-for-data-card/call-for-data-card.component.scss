@@ -1,0 +1,49 @@
+@use '~@angular/material' as mat;
+@import "~@angular/material/theming";
+
+.call-card-wrapper {
+  height: 300px;
+  display: flex;
+  margin-bottom: 2rem;
+
+  .call-image {
+    object-fit: cover;
+    border-radius: 4px 0 0 4px;
+    height: 100%;
+    width: 300px;
+  }
+
+  .call-right-side {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    width: 100%;
+
+    .keyword-wrapper {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+
+      .keyword {
+        text-transform: capitalize;
+        margin: 0;
+        background-color:  mat.get-color-from-palette(mat.$gray-palette, 200);
+        padding: 4px 8px;
+        border-radius: 6px;
+      }
+    }
+
+    .description {
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .buttons-wrapper {
+      display: flex;
+      justify-content: flex-end;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+  }
+}

@@ -1,5 +1,62 @@
 .don-call-examine-wrapper {
+  width: 600px;
+
+  .img-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+
+    .call-image {
+      width: 300px;
+    }
+  }
+
+  .don-call-examine {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
   .title {
     font-weight: 600;
+    margin-right: 0.5rem;
+  }
+
+  .button-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    margin-top: 2rem;
+  }
+
+  .datasets {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 1rem;
+
+    .title {
+      display: flex;
+      justify-content: center;
+    }
+
+    .table-head {
+      display: flex;
+
+      .file-names {
+        width: 30%;
+      }
+    }
+
+    .dataset-line {
+      display: flex;
+
+      .file-link {
+        width: 30%;
+      }
+
+      .description {
+        width: 70%;
+      }
+    }
   }
 }

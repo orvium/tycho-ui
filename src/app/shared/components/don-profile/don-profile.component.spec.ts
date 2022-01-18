@@ -1,4 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterTestingModule } from '@angular/router/testing';
+import { SharedModule } from '../../shared.module';
 
 import { DonProfileComponent } from './don-profile.component';
 
@@ -8,7 +11,8 @@ describe('DonProfileComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DonProfileComponent ]
+      declarations: [ DonProfileComponent ],
+      imports: [SharedModule, BrowserAnimationsModule, RouterTestingModule]
     })
     .compileComponents();
   });

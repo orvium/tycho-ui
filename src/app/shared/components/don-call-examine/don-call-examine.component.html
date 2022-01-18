@@ -1,4 +1,7 @@
-<mat-card class="don-call-examine-wrapper">
+<mat-card class="don-call-examine-wrapper mat-elevation-z4">
+  <div class="img-wrapper">
+    <img [src]="call.imageUrl" alt="" class="call-image">
+  </div>
   <mat-card-title class="don-call-examine">{{ call.title }}</mat-card-title>
   <mat-card-content>
     <div><span class="title">Description:</span> {{ call.description }}</div>
@@ -7,5 +10,41 @@
     <div><span class="title">Contact person:</span> {{ call.contactPerson.name }}</div>
     <div><span class="title">License:</span> {{ call.data.license }}</div>
     <div><span class="title">Personal Information:</span> {{ call.data.personalInformation }}</div>
+    <div *ngIf="call.fileUrl">
+      <span class="title">Data Template:</span>
+      <a [href]="call.fileUrl">Download template</a>
+    </div>
+    <div class="datasets" *ngIf="datasets.length">
+      <div class="title">My datasets:</div>
+      <div class="table-head">
+        <div class="file-names">File names:</div>
+        <div>Description:</div>
+      </div>
+      <div *ngFor="let dataset of datasets" class="dataset-line">
+        <a [href]="dataset.file.url" class="file-link">{{ dataset.file.filename }}</a>
+        <div class="description">{{ dataset.description }}</div>
+      </div>
+    </div>
+    <div class="button-wrapper">
+      <button mat-raised-button
+              color="primary"
+              class="button"
+              *ngIf="hasJoined"
+              (click)="uploadDataset()"
+      >Upload dataset</button>
+      <button mat-raised-button
+              color="warn"
+              class="button"
+              *ngIf="hasJoined; else join"
+              (click)="onRevoke()"
+      >Revoke</button>
+      <ng-template #join>
+        <button mat-raised-button
+                color="primary"
+                class="button"
+                (click)="onJoin()"
+        >Join</button>
+      </ng-template>
+    </div>
   </mat-card-content>
 </mat-card>

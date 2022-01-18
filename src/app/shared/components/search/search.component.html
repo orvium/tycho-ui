@@ -1,0 +1,16 @@
+<div class="search-box">
+  <mat-form-field appearance="outline" class="input-field">
+    <mat-label>{{ label }}</mat-label>
+    <input matInput [(ngModel)]="searchQuery">
+  </mat-form-field>
+  <button mat-stroked-button
+          color="primary"
+          type="button"
+          (click)="onSearch()"
+  >Search</button>
+  <button mat-stroked-button
+          color="warn"
+          type="button"
+          (click)="onClear()"
+  >Clear</button>
+</div>

@@ -1,34 +1,31 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-import { BehaviorSubject, of } from 'rxjs';
-import { AuthenticationService } from '../../../core/services/authentication/authentication.service';
+import { of } from 'rxjs';
+import { AuthenticationService } from 'src/app/core/services/authentication/authentication.service';
 import { SharedModule } from '../../shared.module';
 
-import { DonCallExamineComponent } from './don-call-examine.component';
+import { CallForDataCardComponent } from './call-for-data-card.component';
 
-describe('DonCallExamineComponent', () => {
-  let component: DonCallExamineComponent;
-  let fixture: ComponentFixture<DonCallExamineComponent>;
+describe('CallForDataCardComponent', () => {
+  let component: CallForDataCardComponent;
+  let fixture: ComponentFixture<CallForDataCardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DonCallExamineComponent ],
-      imports: [SharedModule, RouterTestingModule],
-      providers: [
-        { provide: AuthenticationService, useValue: { currentUser$: new BehaviorSubject({_id: '1'}) }}
-      ]
+      declarations: [ CallForDataCardComponent ],
+      imports: [SharedModule],
+      providers: [{ provide: AuthenticationService, useValue: { currentUser$: of({_id: ''}) }}]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DonCallExamineComponent);
+    fixture = TestBed.createComponent(CallForDataCardComponent);
     component = fixture.componentInstance;
     component.call = {
       _id: '1',
       date: new Date(),
       title: '',
-      donors: ['1'],
+      donors: [''],
       consumers: [''],
       description: '',
       keywords: [''],
@@ -55,7 +52,6 @@ describe('DonCallExamineComponent', () => {
         personalInformation: '',
       }
     };
-    component.datasets = [];
     fixture.detectChanges();
   });
 

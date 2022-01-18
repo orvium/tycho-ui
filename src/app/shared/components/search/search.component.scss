@@ -1,0 +1,10 @@
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+
+  .input-field {
+    width: 40vw;
+    margin-top: 1.3rem;
+  }
+}

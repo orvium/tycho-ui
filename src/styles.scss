@@ -1,3 +1,5 @@
+@import './assets/variables.scss';
+
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
@@ -354,3 +356,23 @@ template {
 // Angular Materials Override
 
 .mat-simple-snackbar-action > button { color: white }
+
+.header-wrapper .mat-button-toggle-appearance-standard {
+  font-size: 0.8rem;
+
+  .mat-button-toggle-label-content {
+    line-height: 36px;
+  }
+}
+
+.call-card-wrapper.mat-card {
+  padding: 0;
+}
+
+.mat-chip {
+  &.mat-standard-chip {
+    background-color: transparent;
+    border: 1px solid #0000001f;
+    font-weight: 400;
+  }
+}
