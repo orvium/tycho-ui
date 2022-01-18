@@ -12,15 +12,15 @@ import { SnackbarService } from '../../services/snackbar/snackbar.service';
 @Injectable()
 export class ErrorHandlerInterceptor implements HttpInterceptor {
 
-  constructor(private _snackbar: SnackbarService) {}
+  constructor(private snackbar: SnackbarService) {}
 
   intercept(
     request: HttpRequest<unknown>, next: HttpHandler
-  ) {
+  ): Observable<any> {
     return next.handle(request).pipe(
       catchError(
         (err: any, caught: Observable<HttpEvent<any>>) => {
-          this._snackbar.openSnackBar(err.error.message);
+          this.snackbar.openSnackBar(err.error.message);
 
           return of(err);
         }

@@ -2,16 +2,16 @@ import { TestBed } from '@angular/core/testing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SharedModule } from 'src/app/shared/shared.module';
 
-import { SnackbarService } from './snackbar.service';
+import { EthereumService } from './ethereum.service';
 
-describe('SnackbarService', () => {
-  let service: SnackbarService;
+describe('EthereumService', () => {
+  let service: EthereumService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [SharedModule, MatSnackBarModule]
+      imports: [MatSnackBarModule, SharedModule]
     });
-    service = TestBed.inject(SnackbarService);
+    service = TestBed.inject(EthereumService);
   });
 
   it('should be created', () => {

@@ -2,8 +2,12 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { Role } from 'src/app/core/enums/role.enum';
+import { Notification } from 'src/app/core/interfaces/notification';
 import { User } from 'src/app/core/interfaces/user';
 import { AuthenticationService } from 'src/app/core/services/authentication/authentication.service';
+import { EthereumService } from 'src/app/core/services/ethereum/ethereum.service';
+import { NotificationsApiService } from 'src/app/core/services/notifications-api/notifications-api.service';
+import { SnackbarService } from 'src/app/core/services/snackbar/snackbar.service';
 
 @Component({
   selector: 'app-header',
@@ -13,27 +17,63 @@ import { AuthenticationService } from 'src/app/core/services/authentication/auth
 })
 export class HeaderComponent implements OnInit {
   user$: BehaviorSubject<User>;
+  notifications$: BehaviorSubject<Notification[]>;
+  isBlockchainEnabled = false;
 
   constructor(
-    private _authService: AuthenticationService,
-    private _router: Router
+    private authService: AuthenticationService,
+    private ethereumService: EthereumService,
+    private router: Router,
+    private notificationsApi: NotificationsApiService,
+    private snackbar: SnackbarService
   ) {}
 
   ngOnInit(): void {
-    this.user$ = this._authService.currentUser$;
+    this.user$ = this.authService.currentUser$;
+    this.notifications$ = this.notificationsApi.notifications$;
   }
 
-  logout(): void { this._authService.logout() }
+  logout(): void { this.authService.logout(); }
 
-  goToView(): void {
-    let path: string = this.user$.value.role === Role.Donor ? 'donor' : 'consumer';
+  goToCalls(): void {
+    const path: string = this.user$.value.role === Role.Donor ? 'donor' : 'consumer';
 
-    this._router.navigate(['/', path, 'view']);
+    this.router.navigate(['/', path, 'calls-for-data']);
+  }
+
+  goToMyCalls(): void {
+    this.router.navigate(['/', 'donor', 'my-calls']);
+  }
+
+  goToAllDatasets(): void {
+    this.router.navigate(['/', 'consumer', 'all-datasets']);
   }
 
   goToProfile(): void {
-    let path: string = this.user$.value.role === Role.Donor ? 'donor' : 'consumer';
+    const path: string = this.user$.value.role === Role.Donor ? 'donor' : 'consumer';
 
-    this._router.navigate(['/', path, 'profile']);
+    this.router.navigate(['/', path, 'profile']);
+  }
+
+  goToNotifications(): void {
+    this.router.navigate(['/', 'notifications']);
+  }
+
+  toggleBlockchain(event: any): void {
+    this.isBlockchainEnabled = event.checked;
+
+    if (this.ethereumService.isAvailable.value) {
+      if (this.isBlockchainEnabled) {
+        this.ethereumService.init().then((value: boolean) => {
+          this.isBlockchainEnabled = value;
+        });
+      } else {
+        this.snackbar.openSnackBar('Disabled', 'primary');
+      }
+    }
+  }
+
+  countUnreadNotifications(notifications: Notification[]): number {
+    return notifications.filter((notification) => !notification.isRead).length;
   }
 }

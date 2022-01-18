@@ -1,18 +1,48 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" class="header-wrapper">
   <a class="header-logo" routerLink="/">
     <span class="header-brand">Tycho</span>
   </a>
   <span class="header-spacer"></span>
   <div *ngIf="user$ | async as user">Hi, {{ user.name }} ({{ user.role }})</div>
-  <div *ngIf="user$ | async as user">
+  <div *ngIf="user$ | async as user" class="right-side">
+    <div *ngIf="notifications$ | async as notifications"
+         class="notifications"
+         (click)="goToNotifications()"
+    >
+      <mat-icon>notifications</mat-icon>
+      ({{ countUnreadNotifications(notifications) }})
+    </div>
+    <div class="blockchain">
+      Blockchain:
+      <mat-slide-toggle
+          class="example-margin"
+          [color]="accent"
+          [checked]="isBlockchainEnabled"
+          (change)="toggleBlockchain($event)">
+      </mat-slide-toggle>
+    </div>
     <button mat-raised-button
             class="button"
-            (click)="goToView()"
-    >View</button>
+            (click)="goToCalls()"
+    >All calls</button>
+
+    <button mat-raised-button
+            class="button"
+            *ngIf="user.role === 'donor'"
+            (click)="goToMyCalls()"
+    >My calls</button>
+
+    <button mat-raised-button
+            class="button"
+            *ngIf="user.role === 'consumer'"
+            (click)="goToAllDatasets()"
+    >All Datasets</button>
+
     <button mat-raised-button
             class="button"
             (click)="goToProfile()"
     >Profile</button>
+
     <button mat-raised-button
             color="warn"
             class="button"

@@ -1,19 +1,27 @@
 import { Injectable } from '@angular/core';
-import {MatSnackBar, MatSnackBarConfig} from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SnackbarService {
 
-  constructor(private _snackBar: MatSnackBar) {}
+  constructor(private snackBar: MatSnackBar) {}
 
-  openSnackBar(message: string, action: string = 'Ok', duration: number = 3000) {
-    let config: MatSnackBarConfig = {
+  openSnackBar(
+    message: string,
+    type: string = 'warn',
+    action: string = 'Ok',
+    duration: number = 3000
+  ): void {
+    // primary, warn, accent
+    const typeClass = `mat-${type}`;
+
+    const config: MatSnackBarConfig = {
       duration,
-      panelClass: ['mat-toolbar', 'mat-warn']
+      panelClass: ['mat-toolbar', typeClass]
     };
 
-    this._snackBar.open(message, action, config);
+    this.snackBar.open(message, action, config);
   }
 }

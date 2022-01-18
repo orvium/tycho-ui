@@ -1,6 +1,7 @@
 
 export interface CallDonorInfo {
-  donor: string;
-  callDate: Date;
+  donorName: string;
+  donorId: string;
+  joinDate: Date;
   callTitle: string;
 }

@@ -4,13 +4,13 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'view',
+    redirectTo: 'calls-for-data',
     pathMatch: 'full'
   },
   {
-    path: 'view',
-    loadChildren: () => import('./view/view.module')
-      .then(m => m.ViewModule)
+    path: 'calls-for-data',
+    loadChildren: () => import('./calls-for-data/calls-for-data.module')
+      .then(m => m.CallsForDataModule)
   },
   {
     path: 'profile',
@@ -27,7 +27,17 @@ const routes: Routes = [
     loadChildren: () => import('./create/create.module')
       .then(m => m.CreateModule)
   },
-  { path: '**', redirectTo: '' }
+  {
+    path: 'examine/:id',
+    loadChildren: () => import('./examine/examine.module')
+      .then(m => m.ExamineModule)
+  },
+  {
+    path: 'all-datasets',
+    loadChildren: () => import('./all-datasets/all-datasets.module')
+      .then(m => m.AllDatasetsModule)
+  },
+  { path: '**', redirectTo: 'calls-for-data' }
 ];
 
 @NgModule({

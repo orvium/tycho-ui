@@ -25,6 +25,12 @@ const routes: Routes = [
     loadChildren: () => import('./modules/consumer/consumer.module')
       .then(m => m.ConsumerModule)
   },
+  {
+    path: 'notifications',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./modules/notifications/notifications.module')
+      .then(m => m.NotificationsModule)
+  },
   { path: '**', redirectTo: '' }
 ];
 

@@ -1,17 +1,19 @@
 import {TestBed} from '@angular/core/testing';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {RouterTestingModule} from '@angular/router/testing';
 import {SharedModule} from 'src/app/shared/shared.module';
-import {AuthenticationService} from './authentication.service';
+
+import {NotificationsApiService} from './notifications-api.service';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 
-describe('AuthenticationService', () => {
-  let service: AuthenticationService;
+describe('NotificationsApiService', () => {
+  let service: NotificationsApiService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, RouterTestingModule, SharedModule],
+      imports: [HttpClientTestingModule, SharedModule, BrowserAnimationsModule, RouterTestingModule]
     });
-    service = TestBed.inject(AuthenticationService);
+    service = TestBed.inject(NotificationsApiService);
   });
 
   it('should be created', () => {

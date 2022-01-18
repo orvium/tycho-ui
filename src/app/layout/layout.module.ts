@@ -5,7 +5,7 @@ import { FooterComponent } from './footer/footer.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
-
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -16,7 +16,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     CommonModule,
     MatToolbarModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatSlideToggleModule,
   ],
   exports: [
     HeaderComponent,
