@@ -1,0 +1,27 @@
+<div class="con-calls-for-data-wrapper">
+  <div class="con-calls-for-data-title">
+    <div class="title">Calls for data</div>
+    <button mat-stroked-button
+            color="primary"
+            type="button"
+            class="add-cfd"
+            (click)="onAddNew()"
+    >New +</button>
+  </div>
+  <app-search label="Search for calls"
+              (search)="searchCalls($event)"
+              (clear)="clearSearch()"
+  ></app-search>
+  <div class="w-100 call-table">
+    <app-call-for-data-card *ngFor="let call of calls"
+                            [call]="call"
+                            [mainButton]="{ color: 'primary', text: 'Edit' }"
+                            (mainButtonClick)="onEdit($event)"
+                            [secondaryButton]="{ color: 'primary', text: 'View' }"
+                            (secondaryButtonClick)="onView($event)"
+    ></app-call-for-data-card>
+  </div>
+  <div *ngIf="!calls.length" class="not-found">
+    Calls not found!
+  </div>
+</div>

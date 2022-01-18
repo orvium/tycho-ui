@@ -1,5 +1,7 @@
 <div class="create-wrapper">
   <div class="create-block">
-    <app-con-call-edit (onSubmit)="onSave($event)"></app-con-call-edit>
+    <app-con-call-edit (submitEvent)="onSave($event)"
+                       (finishEvent)="onCallCreateFinish()"
+    ></app-con-call-edit>
   </div>
 </div>

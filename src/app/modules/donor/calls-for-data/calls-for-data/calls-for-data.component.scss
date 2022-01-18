@@ -1,0 +1,30 @@
+.don-calls-for-data-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 24rem;
+
+  .w-100 {
+    width: 100%;
+  }
+
+  .not-found {
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 500;
+    margin-top: 1rem;
+  }
+
+  .don-calls-for-data-title {
+    font-weight: 500;
+    font-size: 2rem;
+    margin: 1rem 0 1rem 0;
+  }
+
+  .call-table {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+}

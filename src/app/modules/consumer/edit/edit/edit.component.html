@@ -1,5 +1,5 @@
 <div class="edit-wrapper" *ngIf="call$ | async as call">
   <div class="edit-block">
-    <app-con-call-edit [call]="call" (onSubmit)="onSave($event)"></app-con-call-edit>
+    <app-con-call-edit [call]="call" (submitEvent)="onSave($event)"></app-con-call-edit>
   </div>
 </div>

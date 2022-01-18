@@ -17,9 +17,9 @@ export class AuthenticationComponent implements OnInit {
   role: typeof Role;
 
   constructor(
-    private _fb: FormBuilder,
-    private _authApi: AuthenticationService,
-    private _router: Router,
+    private fb: FormBuilder,
+    private authApi: AuthenticationService,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -28,7 +28,7 @@ export class AuthenticationComponent implements OnInit {
   }
 
   generateForm(): void {
-    this.form = this._fb.group({
+    this.form = this.fb.group({
       email: [],
       password: [],
       role: [ Role.Donor ]
@@ -36,9 +36,9 @@ export class AuthenticationComponent implements OnInit {
   }
 
   login(): void {
-    let formValue = this.form.value;
+    const formValue = this.form.value;
 
-    this._authApi.login$(
+    this.authApi.login$(
       formValue.email, formValue.password, formValue.role
     ).pipe(
       tap((user: User): void => this.redirect(user))
@@ -46,10 +46,10 @@ export class AuthenticationComponent implements OnInit {
   }
 
   redirect(user: User): void {
-    if (!user) return;
+    if (!user) { return; }
 
-    let path: string = user.role === Role.Donor ? 'donor' : 'consumer';
+    const path: string = user.role === Role.Donor ? 'donor' : 'consumer';
 
-    this._router.navigate(['/', path, 'view']);
+    this.router.navigate(['/', path]);
   }
 }

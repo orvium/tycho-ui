@@ -15,18 +15,18 @@ export class EditComponent implements OnInit {
   call$: Observable<CallForData>;
 
   constructor(
-    private _fakeApi: FakeApiService,
-    private _activateRoute: ActivatedRoute,
-    private _router: Router
+    private fakeApi: FakeApiService,
+    private activateRoute: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
-    this.call$ = this._fakeApi.getCall$(this._activateRoute.snapshot.params.id);
+    this.call$ = this.fakeApi.getCall$(this.activateRoute.snapshot.params.id);
   }
 
   onSave(call: CallForData): void {
-    this._fakeApi.updateCall$(call).pipe(
-      tap((): Promise<boolean> => this._router.navigate(['consumer', 'view']))
+    this.fakeApi.updateCall$(call).pipe(
+      tap((): Promise<boolean> => this.router.navigate(['consumer', 'calls-for-data']))
     ).subscribe();
   }
 }

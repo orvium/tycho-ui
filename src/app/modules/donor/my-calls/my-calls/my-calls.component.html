@@ -1,0 +1,19 @@
+<div class="don-my-calls-wrapper">
+  <div class="don-my-calls-title">My calls for data</div>
+  <app-search label="Search for calls"
+              (search)="searchCalls($event)"
+              (clear)="clearSearch()"
+  ></app-search>
+  <div class="w-100 call-table">
+    <app-call-for-data-card *ngFor="let call of myCalls"
+                            [call]="call"
+                            [mainButton]="{ color: 'warn', text: 'Revoke'}"
+                            [secondaryButton]="{ color: 'primary', text: 'View'}"
+                            (mainButtonClick)="onRevoke($event)"
+                            (secondaryButtonClick)="onView($event)"
+    ></app-call-for-data-card>
+  </div>
+  <div *ngIf="!myCalls.length" class="not-found">
+    Calls not found!
+  </div>
+</div>

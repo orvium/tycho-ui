@@ -5,6 +5,7 @@ import { CallForData } from 'src/app/core/interfaces/call-for-data';
 import { User } from 'src/app/core/interfaces/user';
 import { AuthenticationService } from 'src/app/core/services/authentication/authentication.service';
 import { FakeApiService } from 'src/app/core/services/fake-api/fake-api.service';
+import { CallForDataService } from '../../../../core/services/call-for-data/call-for-data.service';
 
 @Component({
   selector: 'app-create',
@@ -13,20 +14,28 @@ import { FakeApiService } from 'src/app/core/services/fake-api/fake-api.service'
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CreateComponent implements OnInit {
-
   constructor(
-    private _authService: AuthenticationService,
-    private _fakeApi: FakeApiService,
-    private _router: Router
+    private authService: AuthenticationService,
+    private fakeApi: FakeApiService,
+    private cfdService: CallForDataService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {}
 
   onSave(call: CallForData): void {
-    this._authService.currentUser$.pipe(
-      switchMap((user: User) => this._fakeApi.createCall$(user._id, call)),
-      take(1),
-      tap((): Promise<boolean> => this._router.navigate(['consumer', 'view']))
-    ).subscribe();
+    if (call._id) {
+      this.fakeApi.updateCall$(call).subscribe();
+    } else {
+      this.authService.currentUser$.pipe(
+        switchMap((user: User) => this.fakeApi.createCall$(user._id, call)),
+        take(1),
+        tap((newCall: CallForData): CallForData => this.cfdService.currentCall = newCall)
+      ).subscribe();
+    }
+  }
+
+  onCallCreateFinish(): void {
+    this.router.navigate(['consumer', 'calls-for-data']);
   }
 }

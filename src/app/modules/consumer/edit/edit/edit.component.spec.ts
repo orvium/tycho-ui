@@ -1,6 +1,9 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {RouterTestingModule} from '@angular/router/testing';
+import {SharedModule} from 'src/app/shared/shared.module';
 
-import { EditComponent } from './edit.component';
+import {EditComponent} from './edit.component';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('EditComponent', () => {
   let component: EditComponent;
@@ -8,9 +11,10 @@ describe('EditComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EditComponent ]
+      declarations: [EditComponent],
+      imports: [HttpClientTestingModule, RouterTestingModule, SharedModule]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
